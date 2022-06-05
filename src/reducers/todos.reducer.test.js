@@ -23,4 +23,19 @@ describe("testing todos reducer", () => {
 
     expect(reducedState).toEqual(expectedState);
   });
+
+  // DELETE_TODO
+  test("should delete from todos", () => {
+    const todosInitialState = {
+      todos: [{ id: 123, task: "testing you are", isCompleted: false }]
+    };
+    const action = {
+      type: TODOS_ACTIONS.DELETE_TODO,
+      payload: { todoId: 123 }
+    };
+    const expectedState = { todos: [] };
+    const reducedState = todosReducer(todosInitialState, action);
+
+    expect(reducedState).toEqual(expectedState);
+  });
 });

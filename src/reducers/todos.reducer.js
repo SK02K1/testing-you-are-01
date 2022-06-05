@@ -9,6 +9,11 @@ export const todosReducer = (state, action) => {
   switch (type) {
     case TODOS_ACTIONS.ADD_TODO:
       return { ...state, todos: state.todos.concat(payload.todo) };
+    case TODOS_ACTIONS.DELETE_TODO:
+      return {
+        ...state,
+        todos: state.todos.filter(({ id }) => id !== payload.todoId)
+      };
     default:
       return state;
   }
