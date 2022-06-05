@@ -1,5 +1,15 @@
-export const TodoCard = ({ todoData }) => {
-  const { task, isCompleted } = todoData;
+import { TODOS_ACTIONS } from "../constants";
+
+export const TodoCard = ({ todoData, dispatchTodos }) => {
+  const { id, task, isCompleted } = todoData;
+
+  const deleteBtnHandler = () => {
+    dispatchTodos({
+      type: TODOS_ACTIONS.DELETE_TODO,
+      payload: { todoId: id }
+    });
+  };
+
   return (
     <label
       style={{
@@ -16,7 +26,7 @@ export const TodoCard = ({ todoData }) => {
           {task}
         </span>
       </span>
-      <button>delete</button>
+      <button onClick={deleteBtnHandler}>delete</button>
     </label>
   );
 };

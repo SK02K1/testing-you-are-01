@@ -12,7 +12,11 @@ export default function App() {
   const { todos } = todosState;
 
   const todosListing = todos.map((todoData) => (
-    <TodoCard key={todoData.id} todoData={todoData} />
+    <TodoCard
+      key={todoData.id}
+      todoData={todoData}
+      dispatchTodos={dispatchTodos}
+    />
   ));
 
   return (
