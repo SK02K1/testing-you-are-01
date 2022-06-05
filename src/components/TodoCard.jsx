@@ -10,6 +10,13 @@ export const TodoCard = ({ todoData, dispatchTodos }) => {
     });
   };
 
+  const checkboxHandler = () => {
+    dispatchTodos({
+      type: TODOS_ACTIONS.TOGGLE_TODO_COMPLETED_STATE,
+      payload: { todoId: id }
+    });
+  };
+
   return (
     <label
       style={{
@@ -21,7 +28,12 @@ export const TodoCard = ({ todoData, dispatchTodos }) => {
       }}
     >
       <span>
-        <input type="checkbox" name="task" id="task" />
+        <input
+          onChange={checkboxHandler}
+          type="checkbox"
+          name="task"
+          id="task"
+        />
         <span style={{ textDecoration: isCompleted ? "line-through" : "none" }}>
           {task}
         </span>
