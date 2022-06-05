@@ -14,6 +14,15 @@ export const todosReducer = (state, action) => {
         ...state,
         todos: state.todos.filter(({ id }) => id !== payload.todoId)
       };
+    case TODOS_ACTIONS.TOGGLE_TODO_COMPLETED_STATE:
+      return {
+        ...state,
+        todos: state.todos.map((todoData) =>
+          todoData.id === payload.todoId
+            ? { ...todoData, isCompleted: !todoData.isCompleted }
+            : todoData
+        )
+      };
     default:
       return state;
   }

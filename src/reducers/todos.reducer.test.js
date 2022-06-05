@@ -38,4 +38,24 @@ describe("testing todos reducer", () => {
 
     expect(reducedState).toEqual(expectedState);
   });
+
+  // TOGGLE_TODO_COMPLETED_STATE
+  test("should toggle todo isCompleted state", () => {
+    const todosInitialState = {
+      todos: [{ id: 123, task: "testing you are", isCompleted: false }]
+    };
+
+    const action = {
+      type: TODOS_ACTIONS.TOGGLE_TODO_COMPLETED_STATE,
+      payload: { todoId: 123 }
+    };
+
+    const expectedState = {
+      todos: [{ id: 123, task: "testing you are", isCompleted: true }]
+    };
+
+    const reducedState = todosReducer(todosInitialState, action);
+
+    expect(reducedState).toEqual(expectedState);
+  });
 });
